@@ -1,0 +1,218 @@
+audio {
+    display: none;
+}
+:root { --glow-color: #ffd700; }
+body {
+    font-family: 'Lora', serif;
+    background-color: #0c0a1a;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Background Effects & Sparkles --- */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(68, 0, 102, 0.3), transparent 40%),
+                      radial-gradient(circle at 80% 30%, rgba(102, 68, 0, 0.3), transparent 40%);
+    animation: background-pulse 10s infinite alternate ease-in-out;
+}
+
+@keyframes background-pulse {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+.sparkles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--glow-color);
+    border-radius: 50%;
+    box-shadow: 0 0 7px var(--glow-color), 0 0 12px var(--glow-color);
+    animation: floatUp 10s infinite linear;
+    bottom: -20px;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) scale(0.5);
+        opacity: 0;
+    }
+}
+.sparkle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}.sparkle:nth-child(2){left:20%;animation-duration:7s;animation-delay:1s;width:2px;height:2px}.sparkle:nth-child(3){left:30%;animation-duration:15s;animation-delay:3s}.sparkle:nth-child(4){left:40%;animation-duration:8s;animation-delay:0s;width:5px;height:5px}.sparkle:nth-child(5){left:50%;animation-duration:13s;animation-delay:5s}.sparkle:n-child(6){left:60%;animation-duration:9s;animation-delay:2s;width:3px;height:3px}.sparkle:nth-child(7){left:70%;animation-duration:11s;animation-delay:4s}.sparkle:nth-child(8){left:80%;animation-duration:14s;animation-delay:1s;width:5px;height:5px}.sparkle:nth-child(9){left:90%;animation-duration:6s;animation-delay:6s}.sparkle:nth-child(10){left:95%;animation-duration:10s;animation-delay:0s}.sparkle:nth-child(11){left:5%;animation-duration:10s;animation-delay:2s}.sparkle:nth-child(12){left:15%;animation-duration:8s;animation-delay:3s;width:3px;height:3px}.sparkle:nth-child(13){left:25%;animation-duration:13s;animation-delay:1s}.sparkle:nth-child(14){left:35%;animation-duration:11s;animation-delay:0s;width:5px;height:5px}.sparkle:nth-child(15){left:45%;animation-duration:9s;animation-delay:4s}.sparkle:nth-child(16){left:55%;animation-duration:14s;animation-delay:2s;width:3px;height:3px}.sparkle:nth-child(17){left:65%;animation-duration:7s;animation-delay:5s}.sparkle:nth-child(18){left:75%;animation-duration:12s;animation-delay:3s;width:5px;height:5px}.sparkle:nth-child(19){left:85%;animation-duration:10s;animation-delay:1s}.sparkle:nth-child(20){left:92%;animation-duration:8s;animation-delay:0s}
+
+.main-container {
+    position: relative;
+    background: rgba(26, 22, 46, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 223, 150, 0.3) inset;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    z-index: 10;
+}
+
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--glow-color);
+    animation: text-glow 3s infinite alternate;
+}
+h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+h2 { font-size: 2rem; margin-bottom: 1rem; }
+
+@keyframes text-glow {
+    from { text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px #c7a300; }
+    to { text-shadow: 0 0 10px #ffea8a, 0 0 20px var(--glow-color), 0 0 30px #c7a300; }
+}
+
+p { font-size: 1.1rem; color: #dcdcdc; }
+
+/* --- Start & Quiz Styles --- */
+#start-screen p { margin-bottom: 2rem; }
+#start-button, .answer-btn, #retake-quiz-btn {
+    background-color: rgba(255, 215, 0, 0.2);
+    border: 1px solid var(--glow-color);
+    color: var(--glow-color);
+    font-family: 'Lora', serif;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    margin: 0.5rem;
+    width: 80%;
+    max-width: 400px;
+}
+#start-button:hover, .answer-btn:hover, #retake-quiz-btn:hover {
+    background-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+#quiz-screen { display: none; }
+#question-container { min-height: 80px; margin-bottom: 1.5rem; }
+#answer-buttons { display: flex; flex-direction: column; align-items: center; }
+
+/* --- Result Styles --- */
+#ceremony-screen { display: none; text-align: center; }
+#sorting-hat-icon {
+    width: 150px;
+    height: 150px;
+    margin: 1rem auto;
+    animation: hat-thinking 2.5s ease-in-out infinite;
+}
+@keyframes hat-thinking {
+    0%, 100% { transform: rotate(-5deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.05); }
+}
+
+#result-screen { display: none; }
+.house-card {
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 1rem auto;
+    max-width: 500px;
+    animation: fadeInReveal 1s forwards, glow-border-result 2.5s infinite alternate;
+}
+@keyframes fadeInReveal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+/* Glowing animation */
+@keyframes glow-border-result {
+    from { box-shadow: 0 0 8px -2px var(--house-glow-color), 0 0 12px -2px var(--house-glow-color) inset; }
+    to { box-shadow: 0 0 18px 2px var(--house-glow-color), 0 0 22px 2px var(--house-glow-color) inset; }
+}
+
+/* Floating logo animation */
+/* Floating logo animation */
+.house-card .crest-image {
+    display: block;      /* Add this */
+    margin-left: auto;   /* Add this */
+    margin-right: auto;  /* Add this */
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    animation: float-logo 4s ease-in-out infinite;
+}
+@keyframes float-logo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Motto style */
+.house-card .motto {
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.house-card h2 { margin-top: 0; animation: none; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.house-card p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+#gryffindor-card { --house-glow-color: #d3a625; background: linear-gradient(135deg, #740001, #ae0001); border: 2px solid #d3a625; color: #f0e6d2; }
+#hufflepuff-card { --house-glow-color: #f0c75e; background: linear-gradient(135deg, #f0c75e, #eeba30); border: 2px solid #000000; color: #000000; }
+#hufflepuff-card h2 { color: #000000; text-shadow: none; }
+#ravenclaw-card { --house-glow-color: #946b2d; background: linear-gradient(135deg, #0e1a40, #222f5b); border: 2px solid #946b2d; color: #e0d5b7; }
+#slytherin-card { --house-glow-color: #aaaaaa; background: linear-gradient(135deg, #1a472a, #2a623d); border: 2px solid #aaaaaa; color: #f0f0f0; }
+
+/* --- New styles for the house photo --- */
+.house-photo {
+    width: 100%; /* Make the image responsive */
+    height: auto;
+    border-radius: 10px; /* Give it slightly rounded corners */
+    margin-bottom: 1.5rem; /* Add space below the photo */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* A subtle border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* A soft shadow */
+}
+/* --- Entry Screen Styles --- */
+#entry-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0c0a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Ensure it's on top of everything */
+    cursor: pointer;
+    transition: opacity 0.8s ease-out; /* For the fade-out effect */
+}
+
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--glow-color);
+    animation: text-glow 3s infinite alternate; /* Re-use existing glow */
+}
+
+/* This class will be added by JavaScript to hide the screen */
+#entry-screen.hidden {
+    opacity: 0;
+    pointer-events: none; /* Disables clicking after it's hidden */
+}
