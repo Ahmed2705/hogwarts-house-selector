@@ -1,0 +1,24 @@
+# 🧙 Hogwarts House Selector
+
+A fun quiz website that sorts you into a Hogwarts house (Gryffindor, Hufflepuff, Ravenclaw, or Slytherin).  
+Built with **HTML, CSS, and JavaScript**.
+
+## 🔗 Demo
+[Live Demo](https://your-username.github.io/hogwarts-house-selector/)  
+
+## ✨ Features
+- Interactive quiz with multiple-choice questions  
+- Shows your Hogwarts house result at the end  
+- Pure frontend (no backend required)  
+
+## 🚀 How to Run
+1. Download or clone this repo  
+2. Open `index.html` in your browser  
+
+## 🛠️ Tech Stack
+- HTML  
+- CSS  
+- JavaScript  
+
+## 📜 License
+This project is licensed under the MIT License.
